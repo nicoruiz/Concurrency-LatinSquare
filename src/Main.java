@@ -11,12 +11,10 @@ public class Main {
 
         // SortedList testing
         SortedList list = new SortedList();
-        new Thread(() -> list.insert(6)).start();
-        new Thread(() -> list.insert(3)).start();
-        new Thread(() -> list.insert(10)).start();
-        new Thread(() -> list.insert(1)).start();
-        new Thread(() -> list.insert(0)).start();
-        new Thread(() -> list.insert(4)).start();
+        for(int i = 0; i < 10; i++) {
+            LatinWorker latinWoker = new LatinWorker(list, i);
+            latinWoker.start();
+        }
 
         // Instanciar ThreadPool
         ThreadPool tp = new ThreadPool(5);
