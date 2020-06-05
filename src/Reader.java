@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Reader {
 
-    public void ReadFile(String path) {
+    public void readFile(String path) {
         // pass the path to the file as a parameter
         File file = new File(path);
         Scanner sc;

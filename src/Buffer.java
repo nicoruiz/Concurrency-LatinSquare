@@ -10,7 +10,7 @@ public class Buffer {
         this.queue = new LinkedList<>();
     }
 
-    public synchronized void Write(int i) {
+    public synchronized void write(int i) {
         while(isFull()) {
             try {
                 wait();
@@ -23,7 +23,7 @@ public class Buffer {
         notifyAll ();
     }
 
-    public synchronized int Read() {
+    public synchronized int read() {
         while(isEmpty()) {
             try {
                 wait();
