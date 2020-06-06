@@ -1,0 +1,8 @@
+1- Es una matriz de n x n, siendo n el primer numero de la linea. 
+   Posible validacion: el size de todas las sublistas(fila de cada matriz del square) es igual a n.
+
+2- Cada celda contiene un numero entre 1 y n donde en NINGUNA fila ni columna se repiten números.
+   Posibles validaciones:
+   a. No puede haber un elemento de alguna lista > n.
+   b. En ninguna lista se puede repetir un numero (es lo mismo que decir que en ninguna fila se repiten numeros).
+   c. En ninguna columna se puede repetir un numero.
