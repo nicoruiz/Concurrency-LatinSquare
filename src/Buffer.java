@@ -8,6 +8,7 @@ public class Buffer {
     public Buffer(int size) {
         this.limit = size;
         this.queue = new LinkedList<>();
+        //instanciar reader
     }
 
     public synchronized void write(Square square) {
