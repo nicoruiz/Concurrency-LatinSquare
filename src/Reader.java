@@ -6,14 +6,15 @@ import java.util.Scanner;
 
 public class Reader {
     public Buffer buffer;
+    public String filePath;
 
-    public Reader(Buffer buffer) {
+    public Reader(String filePath, Buffer buffer) {
         this.buffer = buffer;
+        this.filePath = filePath;
     }
 
-    public void readFile(String path) {
-        // pass the path to the file as a parameter
-        File file = new File(path);
+    public void readFile() {
+        File file = new File(this.filePath);
         Scanner sc;
         int squareId = 0;
         try {

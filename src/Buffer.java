@@ -5,10 +5,11 @@ public class Buffer {
     private final int limit;
     private final Queue<Square> queue;
 
-    public Buffer(int size) {
+    public Buffer(String filePath, int size) {
         this.limit = size;
         this.queue = new LinkedList<>();
         //instanciar reader
+        new Reader(filePath, this).readFile();
     }
 
     public synchronized void write(Square square) {

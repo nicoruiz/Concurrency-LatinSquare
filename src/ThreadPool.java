@@ -2,8 +2,8 @@ public class ThreadPool {
     private Buffer buffer;
     private int totalWorkers;
 
-    public ThreadPool( Buffer buffer, int workersSize) {
-        this.buffer = buffer;
+    public ThreadPool(String filePath, int bufferSize, int workersSize) {
+        this.buffer = new Buffer(filePath, bufferSize);
         this.totalWorkers = workersSize;
         //instanciar y setar buffer
         SortedList sortedList = new SortedList();
