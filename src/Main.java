@@ -6,9 +6,9 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Buffer buffer = new Buffer(8);
+        Buffer buffer = new Buffer(10);
         // Invocar threadpool
-        ThreadPool threadPool = new ThreadPool();
+        ThreadPool threadPool = new ThreadPool( buffer , 2);
 
         Reader reader = new Reader(buffer);
         reader.readFile("files/inputs-ejemplo");

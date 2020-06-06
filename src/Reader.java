@@ -23,7 +23,7 @@ public class Reader {
                 if(squareId > 0) {
                     // Add a square to buffer per each line
                     this.addSquareToBuffer(squareId, currentLine);
-                    System.out.println(sc.nextLine());
+                    System.out.println(currentLine);
                 }
                 squareId++;
             }
