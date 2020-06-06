@@ -1,8 +1,22 @@
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class Main {
+    public static void main(String[] args) {
+        Buffer buffer = new Buffer(8);
+        // Invocar threadpool
+        ThreadPool threadPool = new ThreadPool();
+
+        Reader reader = new Reader(buffer);
+        reader.readFile("files/inputs-ejemplo");
+        // Main validaciones latin square
+
+    }
+
+    /* MAIN 2
     public static void main(String[] args) {
         LocalDateTime start = LocalDateTime.now();
         // Read file
@@ -25,5 +39,5 @@ public class Main {
         long diff = ChronoUnit.MILLIS.between(start, end);
         System.out.println("Time elapsed in milliseconds: " + diff);
         System.out.println("Sorted list: " + Arrays.toString(list.getSortedList().toArray()));
-    }
+    }*/
 }

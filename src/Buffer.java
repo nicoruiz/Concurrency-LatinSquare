@@ -3,14 +3,14 @@ import java.util.Queue;
 
 public class Buffer {
     private final int limit;
-    private final Queue<Integer> queue;
+    private final Queue<Square> queue;
 
     public Buffer(int size) {
         this.limit = size;
         this.queue = new LinkedList<>();
     }
 
-    public synchronized void write(int i) {
+    public synchronized void write(Square square) {
         while(isFull()) {
             try {
                 wait();
@@ -19,11 +19,11 @@ public class Buffer {
             }
         }
         // Add an element to the end
-        this.queue.add(i);
+        this.queue.add(square);
         notifyAll ();
     }
 
-    public synchronized int read() {
+    public synchronized Square read() {
         while(isEmpty()) {
             try {
                 wait();
@@ -32,9 +32,9 @@ public class Buffer {
             }
         }
         // Removes the first element in the queue
-        int e = this.queue.remove();
+        Square square = this.queue.remove();
         notifyAll();
-        return e;
+        return square;
     }
 
     public boolean isFull() {
