@@ -1,15 +1,13 @@
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Buffer {
     private final int limit;
-    private final Queue<Square> queue;
+    private final List<Square> squares;
 
-    public Buffer(String filePath, int size) {
-        this.limit = size;
-        this.queue = new LinkedList<>();
-        //instanciar reader
-        new Reader(filePath, this).readFile();
+    public Buffer(int limit) {
+        this.limit = limit;
+        this.squares = new ArrayList<>();
     }
 
     public synchronized void write(Square square) {
@@ -20,12 +18,13 @@ public class Buffer {
                 e.printStackTrace();
             }
         }
-        // Add an element to the end
-        this.queue.add(square);
+        // Add a square to the end
+        this.squares.add(this.squares.size(), square);
+        System.out.println("Buffer added square " + square.id + " - buffer size: " + this.squares.size());
         notifyAll ();
     }
 
-    public synchronized Square read() {
+    public synchronized Square read(int threadId) {
         while(isEmpty()) {
             try {
                 wait();
@@ -34,15 +33,20 @@ public class Buffer {
             }
         }
         // Removes the first element in the queue
-        Square square = this.queue.remove();
+        Square square = this.squares.remove(0);
+        System.out.println("Thread " + threadId + " processing square " + square.id + " - buffer size: " + this.squares.size());
         notifyAll();
         return square;
     }
 
+    public void fillFromFile(String filePath) {
+        new Reader(filePath, this).readFile();
+    }
+
     public boolean isFull() {
-        return this.queue.size() == this.limit;
+        return this.squares.size() == this.limit;
     }
     public boolean isEmpty() {
-        return this.queue.isEmpty();
+        return this.squares.size() == 0;
     }
 }

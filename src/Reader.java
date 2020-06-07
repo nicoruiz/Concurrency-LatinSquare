@@ -24,7 +24,7 @@ public class Reader {
                 if(squareId > 0) {
                     // Add a square to buffer per each line
                     this.addSquareToBuffer(squareId, currentLine);
-                    System.out.println(currentLine);
+                    //System.out.println(currentLine);
                 }
                 squareId++;
             }
@@ -38,7 +38,6 @@ public class Reader {
         List<String> numbers = Arrays.asList(line.split(" "));
         // Read all until find the first space
         int n = Integer.parseInt(numbers.get(0));
-        //numbers.remove(0);
         // Create a square with his id, size and line values
         Square square = new Square(squareId, n, numbers);
         // Add square with values as list of list to buffer

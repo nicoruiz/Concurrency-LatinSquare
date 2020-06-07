@@ -14,9 +14,12 @@ public class LatinWorker extends Thread {
         try {
             while(true){
                 //Read square from buffer
+                this.sleep(4000);
+                Square square = this.buffer.read(this.id);
                 //Analizar square
+
             }
-        } catch (PoisonPillException pp){
+        } catch (PoisonPillException | InterruptedException pp){
             System.out.println("Poison Pill, finish working");
         }
         //mandar id de latinSquare
