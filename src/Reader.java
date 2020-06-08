@@ -36,7 +36,7 @@ public class Reader {
     public void addSquareToBuffer(int squareId, String line) {
         // Split list with blank spaces
         List<String> numbers = Arrays.asList(line.split(" "));
-        // Read all until find the first space
+        // First number n represents the matrix size
         int n = Integer.parseInt(numbers.get(0));
         // Create a square with his id, size and line values
         Square square = new Square(squareId, n, numbers);
