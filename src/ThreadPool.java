@@ -11,7 +11,7 @@ public class ThreadPool {
             LatinWorker latinWorker = new LatinWorker(i, sortedList, this.buffer);
             latinWorker.start();
         }
-        // Lleno el buffer desde un archivo
+        // Fill the buffer from a file providing a path
         this.buffer.fillFromFile(filePath);
     }
 }

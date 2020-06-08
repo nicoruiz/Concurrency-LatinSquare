@@ -22,7 +22,7 @@ public class Square {
             if(i > 0) {
                 row.add(number);
             }
-            if(splitFrecuency == 0) {
+            if(splitFrecuency == 0 || isLastElement(i, numbers)) {
                 matrix.add(row);
                 row = new ArrayList<>();
                 splitFrecuency = n;
@@ -31,5 +31,9 @@ public class Square {
         }
         // Set the matrix for this square to determine if it is a latin one
         this.matrix = matrix;
+    }
+
+    private boolean isLastElement(int index, List<String> numbers) {
+        return index == numbers.size() - 1;
     }
 }
