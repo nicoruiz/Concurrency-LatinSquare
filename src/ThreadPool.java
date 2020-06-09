@@ -1,7 +1,7 @@
 public class ThreadPool {
-    private Buffer buffer;
-    private int totalWorkers;
-    private Countdown countDown;
+    public Buffer buffer;
+    public int totalWorkers;
+    public Countdown countDown;
     public SortedList sortedList;
 
     public ThreadPool(String filePath, int bufferSize, int workersSize) {
@@ -9,7 +9,7 @@ public class ThreadPool {
         this.totalWorkers = workersSize;
         this.countDown = new Countdown();
         this.sortedList = new SortedList();
-        
+
         for (int i=0; i < this.totalWorkers; i++) {
             LatinWorker latinWorker = new LatinWorker(i, sortedList, this.buffer, countDown);
             latinWorker.start();

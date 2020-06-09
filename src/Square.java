@@ -3,6 +3,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Square implements Runnable {
+
     public int id;
     public int n;
     public List<List<Integer>> matrix;

@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Buffer {
-    private final int limit;
-    private final List<Runnable> squares;
+    public int limit;
+    public List<Runnable> squares;
 
     public Buffer(int limit) {
         this.limit = limit;

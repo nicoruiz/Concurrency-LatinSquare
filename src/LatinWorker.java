@@ -7,7 +7,7 @@ public class LatinWorker extends Thread {
     public int id;
     public Buffer buffer;
     public SortedList sortedList;
-    private Countdown countDown;
+    public Countdown countDown;
 
     public LatinWorker(int id, SortedList sortedList, Buffer buffer, Countdown countDown) {
         this.id = id;

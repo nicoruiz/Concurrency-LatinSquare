@@ -12,7 +12,7 @@ public class Main {
 
         LocalDateTime end = LocalDateTime.now();
         long diff = ChronoUnit.MILLIS.between(start, end);
-        System.out.println("Sorted List after finish: " + Arrays.toString(threadPool.sortedList.getSortedList().toArray()));
+        System.out.println("Sorted List after finish: " + Arrays.toString(threadPool.sortedList.sortedList.toArray()));
         System.out.println("Time elapsed in milliseconds: " + diff);
     }
 }
