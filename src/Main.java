@@ -8,7 +8,10 @@ public class Main {
         String filePath = "files/inputs-ejemplo";
         int bufferSize = 10;
         int workersSize = 3;
-        ThreadPool threadPool = new ThreadPool(filePath, bufferSize, workersSize);
+        Countdown countdown = new Countdown();
+        SortedList sortedList = new SortedList();
+
+        ThreadPool threadPool = new ThreadPool(filePath, bufferSize, workersSize, countdown, sortedList);
 
         LocalDateTime end = LocalDateTime.now();
         long diff = ChronoUnit.MILLIS.between(start, end);
