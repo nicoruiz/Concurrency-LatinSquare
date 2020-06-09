@@ -34,7 +34,7 @@ public class Buffer {
         }
         // Removes the first element in the queue
         Square square = this.squares.remove(0);
-        System.out.println("Thread " + threadId + " processing square " + square.id + " - buffer size: " + this.squares.size());
+        System.out.println("Latin Worker " + threadId + " processing square " + square.id + " - buffer size: " + this.squares.size());
         notifyAll();
         return square;
     }

@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -29,31 +28,36 @@ public class LatinWorker extends Thread {
     }
 
     private void verifySquare(Square square) {
-        // Validation 1: El size de la matriz tiene que ser igual a n y
-        // el size de todas las sublistas(cada fila de la matriz del square) es igual a n.
-        boolean validation1 = square.matrix.size() == square.n &&
-                              square.matrix.stream()
-                                .allMatch(row -> row.size() == square.n);
-
-        // Validation 2: no puede haber un elemento de la fila mayor a n
-        boolean validation2 = square.matrix.stream()
-                                .allMatch(row -> row.stream()
-                                        .allMatch(e -> e <= square.n));
-
-        // Validation 3: En ninguna lista se puede repetir un numero (es lo mismo que decir que en ninguna fila se repiten numeros)
-        boolean validation3 = !this.hasAnyRepeatedInRow(square);
-
-        // Validation 4: En ninguna columna se puede repetir un numero
-        boolean validation4 = !this.hasAnyRepeatedInColumn(square);
-
-        if(validation1 && validation2 && validation3 && validation4) {
+        if(isNxNShape(square) && allLessThanN(square) &&
+                noRepeatedNumbersInRows(square) && noRepeatedNumbersInColumns(square)) {
             this.sortedList.insert(square.id);
         }
     }
 
-    private boolean hasAnyRepeatedInRow(Square square) {
+    private boolean isNxNShape(Square square) {
+        // Validation 1: El size de la matriz tiene que ser igual a n y
+        // el size de todas las sublistas(cada fila de la matriz del square) es igual a n
+        return square.matrix.size() == square.n &&
+                                  square.matrix.stream()
+                                    .allMatch(row -> row.size() == square.n);
+    }
+
+    private boolean allLessThanN(Square square) {
+        // Validation 2: no puede haber un elemento de la fila mayor a n
         return square.matrix.stream()
-                .anyMatch(this::hasAnyRepeatedElement);
+                .allMatch(row -> row.stream()
+                        .allMatch(e -> e <= square.n));
+    }
+
+    private boolean noRepeatedNumbersInRows(Square square) {
+        // Validation 3: En ninguna lista se puede repetir un numero (es lo mismo que decir que en ninguna fila se repiten numeros)
+        return square.matrix.stream()
+                .noneMatch(this::hasAnyRepeatedElement);
+    }
+
+    private boolean noRepeatedNumbersInColumns(Square square) {
+        // Validation 4: En ninguna columna se puede repetir un numero
+        return !this.hasAnyRepeatedInColumn(square);
     }
 
     private boolean hasAnyRepeatedElement(List<Integer> row) {
