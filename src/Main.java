@@ -8,7 +8,10 @@ public class Main {
         String filePath = "files/latin_squares200";
         int bufferSize = 50;
         int workersSize = 4;
-        ThreadPool threadPool = new ThreadPool(filePath, bufferSize, workersSize);
+        Countdown countdown = new Countdown();
+        SortedList sortedList = new SortedList();
+
+        ThreadPool threadPool = new ThreadPool(filePath, bufferSize, workersSize, countdown, sortedList);
 
         LocalDateTime end = LocalDateTime.now();
         long diff = ChronoUnit.MILLIS.between(start, end);
