@@ -5,9 +5,9 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         LocalDateTime start = LocalDateTime.now();
-        String filePath = "files/inputs-ejemplo";
-        int bufferSize = 10;
-        int workersSize = 3;
+        String filePath = "files/latin_squares200";
+        int bufferSize = 50;
+        int workersSize = 4;
         ThreadPool threadPool = new ThreadPool(filePath, bufferSize, workersSize);
 
         LocalDateTime end = LocalDateTime.now();
