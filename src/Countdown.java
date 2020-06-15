@@ -1,6 +1,10 @@
 public class Countdown {
     private int counter;
 
+    public Countdown(int squaresQuantity) {
+        this.counter = squaresQuantity;
+    }
+
     public synchronized void dec() {
         this.counter--;
         notifyAll ();
@@ -20,9 +24,5 @@ public class Countdown {
 
     public boolean isNotZero() {
         return this.counter > 0;
-    }
-
-    public void setCounter(int counter) {
-        this.counter = counter;
     }
 }

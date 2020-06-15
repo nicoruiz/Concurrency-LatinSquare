@@ -40,8 +40,8 @@ public class Buffer {
         notifyAll ();
     }
 
-    public void fillFromFile(String filePath, Countdown countdown) {
-        new Reader(filePath, this).readFile(countdown);
+    public void fillFromFile(String filePath) {
+        new Reader(filePath, this).readFile();
     }
 
     public boolean isFull() {

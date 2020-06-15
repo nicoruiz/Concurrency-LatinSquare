@@ -15,7 +15,7 @@ public class ThreadPool {
             latinWorker.start();
         }
         // Fill the buffer from a file providing a path
-        this.buffer.fillFromFile(filePath, this.countdown);
+        this.buffer.fillFromFile(filePath);
         this.countdown.zero();
         this.stop();
     }

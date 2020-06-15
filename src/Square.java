@@ -25,7 +25,7 @@ public class Square implements Runnable {
             if(i > 0) {
                 row.add(number);
             }
-            if(splitFrecuency == 0 || i == numbers.size() - 1) {
+            if(splitFrecuency == 0 || isLastElementStr(i, numbers)) {
                 matrix.add(row);
                 row = new ArrayList<>();
                 splitFrecuency = n;
@@ -107,4 +107,5 @@ public class Square implements Runnable {
     private boolean isLastElement(int index, List<Integer> list) {
         return index == list.size() - 1;
     }
+    private boolean isLastElementStr(int index, List<String> list) { return index == list.size() - 1; }
 }

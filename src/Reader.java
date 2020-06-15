@@ -13,7 +13,7 @@ public class Reader {
         this.filePath = filePath;
     }
 
-    public void readFile(Countdown countdown) {
+    public void readFile() {
         File file = new File(this.filePath);
         Scanner sc;
         int squareId = 0;
@@ -21,9 +21,7 @@ public class Reader {
             sc = new Scanner(file);
             while(sc.hasNextLine()) {
                 String currentLine = sc.nextLine();
-                if(squareId == 0) {
-                    countdown.setCounter(Integer.parseInt(currentLine));
-                }else{
+                if(squareId > 0) {
                     // Add a square to buffer per each line
                     this.addSquareToBuffer(squareId, currentLine);
                     //System.out.println(currentLine);
